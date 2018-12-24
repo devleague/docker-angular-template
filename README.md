@@ -1,27 +1,20 @@
-# DockerAngularTemplate
+Use `ng serve` to start the react server
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+`docker-compose up` to start the backend server along with postgres and redis.
 
-## Development server
+`
+"nodemonConfig": {
+  "watch": ["server"]
+},
+`
+The above configurations tells the react proxy server to redirect all api calls to the backend docker instance. The `nodemonConfig` tells nodemon to only watch the server dir.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The `proxy.conf.json` file setups the proxy for the ng server to redirect all traffic on `/api` to go to the backend docker instance instead.
 
-## Code scaffolding
+The way the knexfile is setup, the development section allow the user to run the knex migration from the host computer and is routed to the docker instance using localhost. The production section is used by docker to setup the postgres DB and it's connections to the rest of the docker containers.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is controlled using the `ENVIRONMENT` property within the docker-compose.override.yml file, under the environment section.
 
-## Build
+`knex migrate:latest` will run any migrations made, but this needs to be run in the server dir as that is where the knexfile.js is.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The `npm run dev` script within the package.json file sets up the how docker is going to run the express server using nodemon.

@@ -11,6 +11,9 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "nodemonConfig": {
+    "watch": ["server"]
+  },
   "dependencies": {
     "@angular/animations": "~7.1.0",
     "@angular/common": "~7.1.0",
