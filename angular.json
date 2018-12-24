@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "docker-angular-template:build"
+            "browserTarget": "docker-angular-template:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

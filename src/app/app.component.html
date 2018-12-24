@@ -18,4 +18,18 @@
   </li>
 </ul>
 
+{{ smokeTest }}
+
+<div *ngFor="let user of users">
+  {{ user.username }}
+</div>
+
+<div>
+  <label for="user">
+    Create a User:
+  </label>
+  <input type="text" [(ngModel)]="newUser.username">
+  <button (click)="createUser()">Create</button>
+</div>
+
 <router-outlet></router-outlet>

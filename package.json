@@ -2,6 +2,7 @@
   "name": "docker-angular-template",
   "version": "0.0.0",
   "scripts": {
+    "dev": "./node_modules/nodemon/bin/nodemon.js ./server/server.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -19,7 +20,14 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "body-parser": "^1.18.3",
+    "bookshelf": "^0.14.2",
     "core-js": "^2.5.4",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
+    "pg": "^7.7.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
