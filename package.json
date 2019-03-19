@@ -2,7 +2,6 @@
   "name": "docker-angular-template",
   "version": "0.0.0",
   "scripts": {
-    "dev": "./node_modules/nodemon/bin/nodemon.js ./server/server.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
